@@ -5,4 +5,50 @@
 Terraform को बताती है:
 
 अगर "tags" missing है, तो null assign कर दो (error मत दो)।
+/////////////////
+GIT FEATURE BRANCH WORKFLOW — STEP-BY-STEP
+
+STEP-1: Ensure you are on latest main branch
+VS Code terminal me:
+git checkout main
+git pull origin main
+Isse tumhari main branch updated ho jayegi.
+STEP-2: New feature branch banao
+git checkout -b <branch-name>
+Example:
+git checkout -b feature-update-nsg
+
+Isse ye hog a:
+
+ek naya branch create hoga
+
+tum us branch me switch ho jaoge
+STEP-3: Code me jo update karna hai woh karo
+VS Code me files open →
+edit → save.
+STEP-4: Changes ko stage karo
+git add .
+STEP-5: Commit message do
+git commit -m "Updated NSG module and fixed rules"
+STEP-6: Feature branch ko remote pe push karo
+git push origin feature-update-nsg
+Yeh automatically Azure DevOps me new branch create karega.
+STEP-7: Azure DevOps Portal me Pull Request (PR) banao
+Azure DevOps → Repos → Branches
+
+Tumhari branch feature-update-nsg dikhegi
+
+Uske right side me “Create Pull Request” button hoga
+
+PR banate waqt source branch = feature branch
+
+Target branch = main
+
+Approve → Complete → Merge
+STEP-8: Local main branch ko update karo (optional)
+git checkout main
+git pull origin main
+Extra: Agar branch delete karna ho
+git branch -d feature-update-nsg  # Local
+git push origin --delete feature-update-nsg  # remote
 
