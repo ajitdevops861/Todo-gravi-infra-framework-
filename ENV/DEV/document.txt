@@ -1,0 +1,8 @@
+# 🔥 Use `try()` so Terraform won't fail if tags not present
+  tags = try(each.value.tags, null)
+}
+✅ यह line — tags = try(each.value.tags, null)
+Terraform को बताती है:
+
+अगर "tags" missing है, तो null assign कर दो (error मत दो)।
+
