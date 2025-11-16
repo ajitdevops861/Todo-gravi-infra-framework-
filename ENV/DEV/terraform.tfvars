@@ -121,7 +121,7 @@ kv_secrets = {
     rg_name = "kerg001"
 
     secret_name  = "frontend-vm1-adminusername-"
-    secret_value = "Raghav@12345"
+    secret_value = "adminuseraj"
     tags         = { environment = "dev" }
   },
   kv_secret2 = {
@@ -130,15 +130,30 @@ kv_secrets = {
     secret_name  = "frontend-vm1-adminpassword-"
     secret_value = "ajitraghav@0000"
     tags         = { environment = "dev" }
-  }
+  },
+  "kv_secret3" = {
+    kv_name = "keyvault-todo-new"
+    rg_name = "kerg001"
 
-  kv_secret3 = {
+    secret_name  = "Backend-vm2-adminusername-"
+    secret_value = "adminuseraj"
+    tags         = { environment = "dev" }
+  },
+  kv_secret4 = {
+    kv_name      = "keyvault-todo-new"
+    rg_name      = "kerg001"
+    secret_name  = "Backend-vm2-adminpassword-"
+    secret_value = "ajitraghav@0000"
+    tags         = { environment = "dev" }
+  },
+
+  kv_secret5 = {
     kv_name      = "keyvault-todo-new"
     rg_name      = "kerg001"
     secret_name  = "sql-usernamee1"
     secret_value = "devopsadmin"
-  }
-  kv_secret4 = {
+  },
+  kv_secret6 = {
     kv_name      = "keyvault-todo-new"
     rg_name      = "kerg001"
     secret_name  = "sql-passwordd1"
@@ -235,8 +250,8 @@ vms = {
     disable_password_authentication = false
     nic_name                        = "nic-backend"
     kv_name                         = "keyvault-todo-new"
-    vm_username_secret_name         = "frontend-vm1-adminusername-"
-    vm_password_secret_name         = "frontend-vm1-adminpassword-"
+    vm_username_secret_name         = "Backend-vm2-adminusername-"
+    vm_password_secret_name         = "Backend-vm2-adminpassword-"
     source_image_reference = {
       publisher = "Canonical"
       offer     = "UbuntuServer"
