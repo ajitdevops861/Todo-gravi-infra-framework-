@@ -11,6 +11,8 @@ resource "azurerm_virtual_network" "meravnets" {
       content {
         name = subnet.value.name
         address_prefixes = subnet.value.address_prefixes
+         #  THIS IS THE FIX (Enable Internet Outbound)
+         default_outbound_access_enabled = true
       }
     }
 }
