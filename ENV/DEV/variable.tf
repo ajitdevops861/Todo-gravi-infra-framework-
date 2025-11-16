@@ -18,6 +18,8 @@ variable "vnets" {
     subnets = optional(list(object({
       name             = string
       address_prefixes = list(string)
+      #  Added field for enabling outbound internet
+      default_outbound_access_enabled  = optional(bool, true)
     })), [])
 
   }))

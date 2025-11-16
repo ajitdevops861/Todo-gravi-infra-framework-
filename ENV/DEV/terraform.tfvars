@@ -23,11 +23,13 @@ vnets = {
       {
         address_prefixes = ["10.2.1.0/24"]
         name             = "frontend_subnet"
+        default_outbound_access_enabled  = true
       },
 
       {
         name             = "Backend_subnet"
         address_prefixes = ["10.2.2.0/24"]
+        default_outbound_access_enabled  = true
       }
     ]
 
@@ -67,7 +69,19 @@ nsgs = {
 
       }
     ]
-    Outbound_rules = []
+    Outbound_rules = [
+      {
+        name                       = "Allow-All-Outbound"
+        priority                   = 100
+       # direction                  = "Outbound"
+        access                     = "Allow"
+        protocol                   = "*"
+        source_port_range          = "*"
+        destination_port_range     = "*"
+        source_address_prefix      = "*"
+        destination_address_prefix = "*"
+      }
+    ]
 
   }
 }
@@ -229,7 +243,7 @@ vms = {
     location                        = "westus"
     size                            = "Standard_B1s"
     disable_password_authentication = false
-    script_name = "middleware.nginx.sh"
+    script_name                     = "middleware.nginx.sh"
     nic_name                        = "nic-frontend"
     kv_name                         = "keyvault-todo-new"
     vm_username_secret_name         = "frontend-vm1-adminusername-"
