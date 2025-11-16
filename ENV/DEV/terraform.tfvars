@@ -17,7 +17,7 @@ vnets = {
     resource_group_name = "kerg001"
 
     address_space = ["10.2.0.0/16"]
-    dns_servers   = ["10.2.0.4", "10.2.0.5"]
+    #dns_servers   = ["10.2.0.4", "10.2.0.5"]
 
     subnets = [
       {

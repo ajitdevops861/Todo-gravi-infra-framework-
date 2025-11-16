@@ -4,7 +4,7 @@ resource "azurerm_virtual_network" "meravnets" {
     location = each.value.location
     resource_group_name = each.value.resource_group_name
     address_space = each.value.address_space
-    dns_servers = each.value.dns_servers
+    #dns_servers = each.value.dns_servers
 
     dynamic "subnet"{
       for_each = each.value.subnets
