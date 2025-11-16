@@ -13,8 +13,11 @@ resource "azurerm_linux_virtual_machine" "vm" {
   network_interface_ids = [data.azurerm_network_interface.nic_ids[each.key].id]
 
  # ---------- Optional Arguments ----------
+   # ✔️ Nginx installation script
 
-# custom_data                = base64encode(file(each.value.script_name))   # custom_data usage
+
+ #custom_data                = base64encode(file(each.value.script_name))   # custom_data usage
+custom_data = each.value.script_name == null ? null : base64encode(file("${path.module}/${each.value.script_name}"))
 
 
   # admin_ssh_key {

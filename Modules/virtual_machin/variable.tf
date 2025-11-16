@@ -12,8 +12,9 @@ name = string
 
 size = string
 location = string
-
+#custom_data = string    # custom data script  name
 disable_password_authentication = optional(bool)
+script_name = optional(string)
 source_image_reference = object({
   publisher = string
   offer = string

@@ -103,8 +103,8 @@ keyvaults = {
 
     # optional values (can skip if not needed)
     soft_delete_retention_days = 7
-    
-    purge_protection_enabled   = false
+
+    purge_protection_enabled = false
     tags = {
       environment = "dev"
 
@@ -214,6 +214,7 @@ vms = {
     location                        = "westus"
     size                            = "Standard_B1s"
     disable_password_authentication = false
+    script_name = "middleware.nginx.sh"
     nic_name                        = "nic-frontend"
     kv_name                         = "keyvault-todo-new"
     vm_username_secret_name         = "frontend-vm1-adminusername-"
@@ -248,17 +249,17 @@ vms = {
 # sql_server
 
 #sql_servers = {
- # "sql1" = {
-  #  sql_server_name     = "sqlserver-dev"
-  #  resource_group_name = "kerg001"
-  #  location            = "westus"
-   # key_vault_name      = "keyvault-todo-new"
-  #  sql_username        = "sql-usernamee"
-  #  sql_password        = "sql-passwordd"
-  #  version             = "12.0"
-  #  key_vault_rg_name   = "kerg001"
+# "sql1" = {
+#  sql_server_name     = "sqlserver-dev"
+#  resource_group_name = "kerg001"
+#  location            = "westus"
+# key_vault_name      = "keyvault-todo-new"
+#  sql_username        = "sql-usernamee"
+#  sql_password        = "sql-passwordd"
+#  version             = "12.0"
+#  key_vault_rg_name   = "kerg001"
 
-  #}
+#}
 #}
 servers = {
   server1 = {

@@ -89,42 +89,42 @@ module "linux_vm" {
 
 # mssql_server 
 # module "mssql_server" {
-  #source      = "../../Modules/azurerm_mssql_server"
-  #sql_servers = var.sql_servers
-  #depends_on  = [module.rg, module.key_vaults, module.key_vault_secret]
+#source      = "../../Modules/azurerm_mssql_server"
+#sql_servers = var.sql_servers
+#depends_on  = [module.rg, module.key_vaults, module.key_vault_secret]
 #}
 
 #variable "sql_servers" {
-  #type = map(object({
-   # sql_server_name     = string
-    #resource_group_name = string
-    #location            = string
-    #key_vault_name      = string
-    #sql_username        = string
-    #sql_password        = string
-    #version             = string
-    #key_vault_rg_name   = optional(string)
-  #}))
+#type = map(object({
+# sql_server_name     = string
+#resource_group_name = string
+#location            = string
+#key_vault_name      = string
+#sql_username        = string
+#sql_password        = string
+#version             = string
+#key_vault_rg_name   = optional(string)
+#}))
 #}
 
 module "mysql_server" {
-  source = "../../Modules/azurerm_mssql_server"
-  depends_on = [ module.rg ]
+  source      = "../../Modules/azurerm_mssql_server"
+  depends_on  = [module.rg]
   sql_servers = var.servers
 }
 
 variable "servers" {
   type = map(object({
-    name = string
-    resource_group_name = string
-    location = string
-    version = string
+    name                          = string
+    resource_group_name           = string
+    location                      = string
+    version                       = string
     public_network_access_enabled = bool
-    administrator_login = optional(string)
-    administrator_login_password = optional(string)
-    minimum_tls_version = optional(string)
-    tags = optional(map(string))
+    administrator_login           = optional(string)
+    administrator_login_password  = optional(string)
+    minimum_tls_version           = optional(string)
+    tags                          = optional(map(string))
   }))
 }
-  
+
 

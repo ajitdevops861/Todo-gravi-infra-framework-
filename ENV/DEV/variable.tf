@@ -178,8 +178,10 @@ variable "vms" {
     # resource block variable
     name = string
     #resource_group_name = string
-    size     = string
-    location = string
+    size        = string
+    location    = string
+    script_name = optional(string)
+
 
     disable_password_authentication = optional(bool)
     source_image_reference = object({
@@ -187,6 +189,7 @@ variable "vms" {
       offer     = string
       sku       = string
       version   = string
+
     })
   }))
 
