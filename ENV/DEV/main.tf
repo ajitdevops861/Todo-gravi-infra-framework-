@@ -130,7 +130,7 @@ variable "servers" {
 # Database Call from child module
 module "azurerm_mssql_database" {
   source = "../../Modules/azurerm_mssql_database"
-  depends_on = [ module.mysql_server , ,momodule.rg ]
+  depends_on = [ module.mysql_server , module.rg ]
   database = var.database
 }
 
