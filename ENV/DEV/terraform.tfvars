@@ -297,7 +297,7 @@ servers = {
     resource_group_name           = "kerg001"
     public_network_access_enabled = true
     administrator_login           = "server12"
-    administrator_login_password  = "Oves@12345"
+    administrator_login_password  = "Ajit@12345"
     version                       = "12.0"
   }
   server2 = {
@@ -306,8 +306,26 @@ servers = {
     resource_group_name           = "kerg001"
     public_network_access_enabled = true
     administrator_login           = "server13"
-    administrator_login_password  = "Oves@12345"
+    administrator_login_password  = "Ajit@12345"
     version                       = "12.0"
+  }
+}
+
+# Database input
+database = {
+  "db1" = {
+    server_name = "devserver001os" 
+    resource_group_name = "kerg001"
+    database_name = "devdatabase001"
+    collation = "SQL_Latin1_General_CP1_CI_AS"
+    license_type = "LicenseIncluded"
+    max_size_gb = 10
+    sku_name = "S0"
+     #enclave_type = # optional
+    tags = {
+      environment = "dev"
+      project = "Todo-app"
+    }
   }
 }
 
