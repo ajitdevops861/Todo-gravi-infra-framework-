@@ -1,0 +1,34 @@
+pool: My Agent
+trigger:
+- feature/*
+- main
+
+steps:
+- task: TerraformTask@5
+  displayName: Terraform Init
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
+    backendServiceArm: 'corp-prod-01-aj-todo-aaplication'
+    backendAzureRmResourceGroupName: 'shivi109'
+    backendAzureRmStorageAccountName: 'devshivi109'
+    backendAzureRmContainerName: 'tfstate'
+    backendAzureRmKey: 'dev.terraform.tfstate'
+
+- task: TerraformTask@5
+  displayName: Terraform validate
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
+
+- task: TerraformTask@5
+  displayName: Terraform plan
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
+    environmentServiceNameAzureRM: 'corp-prod-01-aj-todo-aaplication'
+
+
