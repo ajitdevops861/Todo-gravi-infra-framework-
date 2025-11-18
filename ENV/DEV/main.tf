@@ -148,4 +148,25 @@ variable "database" {
   }))
 }
 
+# call storage
+
+module "storage_account_name" {
+  source = "../../Modules/azurerm_storage_account"
+  depends_on = [ module.rg ]
+  stgs = var.stgs
+}
+variable "stgs" {
+  type = map(object({
+      storage_account_name = string
+      resource_group_name = string
+      location = string
+      account_tier = string
+      account_replication_type = string
+      min_tls_version = string
+      public_network_access_enabled = bool
+      tags = optional(map(string))
+    }))
+}
+
+
 

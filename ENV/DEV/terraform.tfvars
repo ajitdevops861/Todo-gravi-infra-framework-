@@ -329,3 +329,20 @@ database = {
   }
 }
 
+# Storage_account_input
+stgs = {
+  "stg1" = {
+    storage_account_name = "devshivi110"
+      resource_group_name = "kerg001"
+      location = "westus"
+      account_tier =  "Standard"
+      account_replication_type = "LRS"
+      min_tls_version = "TLS1_2"
+      public_network_access_enabled = true
+      tags = {
+        environment = "dev"
+        project = "Todo-app"
+      }
+  }
+}
+
