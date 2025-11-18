@@ -155,6 +155,7 @@ module "storage_account_name" {
   depends_on = [ module.rg ]
   stgs = var.stgs
 }
+# variable
 variable "stgs" {
   type = map(object({
       storage_account_name = string
