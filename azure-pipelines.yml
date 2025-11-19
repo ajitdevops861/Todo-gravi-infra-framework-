@@ -14,7 +14,7 @@ steps:
     backendAzureRmResourceGroupName: 'shivi109'
     backendAzureRmStorageAccountName: 'devshivi109'
     backendAzureRmContainerName: 'tfstate'
-    backendAzureRmKey: 'dev.terraform.tfstate'
+    backendAzureRmKey: 'dev1.terraform.tfstate'
 
 - task: TerraformTask@5
   displayName: Terraform validate
