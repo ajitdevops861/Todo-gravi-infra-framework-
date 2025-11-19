@@ -13,6 +13,7 @@ resource "azurerm_storage_account" "storage" {
   tags = each.value.tags
   }
 
+# variable
   variable "stgs" {
     type = map(object({
       storage_account_name = string
