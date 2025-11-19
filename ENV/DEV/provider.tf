@@ -9,7 +9,9 @@ backend "azurerm" {
   resource_group_name = "shivi109"
   storage_account_name = "devshivi109"
   container_name = "tfstate"
-  key = "dev.terraform.tfstate"
+  key = "dev1.terraform.tfstate"
+  
+  use_azuread_auth = true
 }
 
 
