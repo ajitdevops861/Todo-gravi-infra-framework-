@@ -46,3 +46,12 @@ steps:
     workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
     environmentServiceNameAzureRM: 'corp-prod-02-aj-todo-aplication'
 
+- task: TerraformTask@5
+  displayName: 'apply'
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
+    commandOptions: 'auto-approve'
+    environmentServiceNameAzureRM: 'corp-prod-02-aj-todo-aplication'
+
