@@ -6,10 +6,12 @@ pool: My Agent
 
 steps:
 - task: TerraformInstaller@1
+  displayName: 'terraform install'
   inputs:
     terraformVersion: 'latest'
 
 - task: TerraformTask@5
+  displayName: 'terraform init'
   inputs:
     provider: 'azurerm'
     command: 'init'
@@ -20,21 +22,24 @@ steps:
     backendAzureRmKey: 'dev2.terraform.tfstate'
 
 - task: TerraformTask@5
+  displayName: 'terraform fmt'
   inputs:
     provider: 'azurerm'
     command: 'custom'
-    workingDirectory: '$(System.DefaultWorkingDirectory)ENV/DEV'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
     outputTo: 'console'
     customCommand: 'fmt'
     environmentServiceNameAzureRM: 'corp-prod-02-aj-todo-aplication'
 
 - task: TerraformTask@5
+  displayName: 'validate terraform'
   inputs:
     provider: 'azurerm'
     command: 'validate'
-    workingDirectory: '$(System.DefaultWorkingDirectory)ENV/DEV'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
 
 - task: TerraformTask@5
+  displayName: 'terraform plan'
   inputs:
     provider: 'azurerm'
     command: 'plan'
