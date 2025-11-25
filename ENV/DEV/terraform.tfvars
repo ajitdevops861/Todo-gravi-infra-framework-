@@ -332,7 +332,7 @@ database = {
 # Storage_account_input
 stgs = {
   "stg1" = {
-    storage_account_name = "devshivi110"
+    storage_account_name = "devshivi111"
       resource_group_name = "kerg001"
       location = "westus"
       account_tier =  "Standard"
