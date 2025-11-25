@@ -7,9 +7,9 @@ terraform {
   }
 backend "azurerm" {
   resource_group_name = "shivi109"
-  storage_account_name = "devshivi109"
+  storage_account_name = "devshivi110"
   container_name = "tfstate"
-  key = "dev1.terraform.tfstate"
+  key = "dev2.terraform.tfstate"
   
   use_azuread_auth = true
 }
