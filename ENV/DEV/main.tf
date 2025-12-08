@@ -129,44 +129,44 @@ variable "servers" {
 
 # Database Call from child module
 module "azurerm_mssql_database" {
-  source = "../../Modules/azurerm_mssql_database"
-  depends_on = [ module.mysql_server , module.rg ]
-  database = var.database
+  source     = "../../Modules/azurerm_mssql_database"
+  depends_on = [module.mysql_server, module.rg]
+  database   = var.database
 }
 
 variable "database" {
   type = map(object({
-    server_name = string
+    server_name         = string
     resource_group_name = string
-    database_name = string
-    collation = string
-    license_type = optional(string)
-    max_size_gb = number
-    sku_name = string
-    enclave_type = optional(string)
-    tags = optional(map(string))
+    database_name       = string
+    collation           = string
+    license_type        = optional(string)
+    max_size_gb         = number
+    sku_name            = string
+    enclave_type        = optional(string)
+    tags                = optional(map(string))
   }))
 }
 
 # call storage
 
 module "storage_account_name" {
-  source = "../../Modules/azurerm_storage_account"
-  depends_on = [ module.rg ]
-  stgs = var.stgs
+  source     = "../../Modules/azurerm_storage_account"
+  depends_on = [module.rg]
+  stgs       = var.stgs
 }
 # variable
 variable "stgs" {
   type = map(object({
-      storage_account_name = string
-      resource_group_name = string
-      location = string
-      account_tier = string
-      account_replication_type = string
-      min_tls_version = string
-      public_network_access_enabled = bool
-      tags = optional(map(string))
-    }))
+    storage_account_name          = string
+    resource_group_name           = string
+    location                      = string
+    account_tier                  = string
+    account_replication_type      = string
+    min_tls_version               = string
+    public_network_access_enabled = bool
+    tags                          = optional(map(string))
+  }))
 }
 
 
