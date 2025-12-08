@@ -13,7 +13,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)ENV/DEV'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
     backendServiceArm: 'corp-prod-03-aj-todo-aplication'
     backendAzureRmStorageAccountName: 'devshivi119'
     backendAzureRmContainerName: 'tfstate'
