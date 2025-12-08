@@ -7,7 +7,7 @@ terraform {
   }
 backend "azurerm" {
   resource_group_name = "shivi109"
-  storage_account_name = "devshivi110"
+  storage_account_name = "devshivi119"
   container_name = "tfstate"
   key = "dev2.terraform.tfstate"
   
@@ -25,5 +25,5 @@ provider "azurerm" {
 
   }
 
-  subscription_id = "e5efa2cd-02a5-4c7b-be99-6e2ae6d5feac"
+  subscription_id = "3d1ce785-6c4d-4565-bb5e-3b46939260a6"
 }
