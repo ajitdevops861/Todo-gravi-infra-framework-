@@ -5,14 +5,14 @@ terraform {
       version = "4.52.0"
     }
   }
-backend "azurerm" {
-  resource_group_name = "shivi109"
-  storage_account_name = "devshivi119"
-  container_name = "tfstate"
-  key = "dev2.terraform.tfstate"
-  
-  use_azuread_auth = true
-}
+  backend "azurerm" {
+    resource_group_name  = "shivi109"
+    storage_account_name = "devshivi119"
+    container_name       = "tfstate"
+    key                  = "dev2.terraform.tfstate"
+
+    use_azuread_auth = true
+  }
 
 
 

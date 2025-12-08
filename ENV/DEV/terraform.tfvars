@@ -8,6 +8,11 @@ rgs1 = {
       owner       = "aj"
     }
   }
+
+  rg2 = {
+    name = "graviinfra101"
+    location = "eastus"
+  }
 }
 
 vnets = {
@@ -21,15 +26,15 @@ vnets = {
 
     subnets = [
       {
-        address_prefixes = ["10.2.1.0/24"]
-        name             = "frontend_subnet"
-        default_outbound_access_enabled  = true
+        address_prefixes                = ["10.2.1.0/24"]
+        name                            = "frontend_subnet"
+        default_outbound_access_enabled = true
       },
 
       {
-        name             = "Backend_subnet"
-        address_prefixes = ["10.2.2.0/24"]
-        default_outbound_access_enabled  = true
+        name                            = "Backend_subnet"
+        address_prefixes                = ["10.2.2.0/24"]
+        default_outbound_access_enabled = true
       }
     ]
 
@@ -71,9 +76,9 @@ nsgs = {
     ]
     Outbound_rules = [
       {
-        name                       = "Allow-All-Outbound"
-        priority                   = 100
-       # direction                  = "Outbound"
+        name     = "Allow-All-Outbound"
+        priority = 100
+        # direction                  = "Outbound"
         access                     = "Allow"
         protocol                   = "*"
         source_port_range          = "*"
@@ -314,17 +319,17 @@ servers = {
 # Database input
 database = {
   "db1" = {
-    server_name = "devserver001os" 
+    server_name         = "devserver001os"
     resource_group_name = "kerg001"
-    database_name = "devdatabase001"
-    collation = "SQL_Latin1_General_CP1_CI_AS"
-    license_type = "LicenseIncluded"
-    max_size_gb = 10
-    sku_name = "S0"
-     #enclave_type = # optional
+    database_name       = "devdatabase001"
+    collation           = "SQL_Latin1_General_CP1_CI_AS"
+    license_type        = "LicenseIncluded"
+    max_size_gb         = 10
+    sku_name            = "S0"
+    #enclave_type = # optional
     tags = {
       environment = "dev"
-      project = "Todo-app"
+      project     = "Todo-app"
     }
   }
 }
@@ -332,17 +337,17 @@ database = {
 # Storage_account_input
 stgs = {
   "stg1" = {
-    storage_account_name = "devshivi111"
-      resource_group_name = "kerg001"
-      location = "westus"
-      account_tier =  "Standard"
-      account_replication_type = "LRS"
-      min_tls_version = "TLS1_2"
-      public_network_access_enabled = true
-      tags = {
-        environment = "dev"
-        project = "Todo-app"
-      }
+    storage_account_name          = "devshivi111"
+    resource_group_name           = "kerg001"
+    location                      = "westus"
+    account_tier                  = "Standard"
+    account_replication_type      = "LRS"
+    min_tls_version               = "TLS1_2"
+    public_network_access_enabled = true
+    tags = {
+      environment = "dev"
+      project     = "Todo-app"
+    }
   }
 }
 
