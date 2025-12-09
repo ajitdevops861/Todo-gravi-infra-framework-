@@ -1,9 +1,9 @@
 trigger: none
-pool: none 
+pool: My Agent
 jobs:
 - job: FirstJob
   displayName: pahala job
-  pool: none
+  pool: My Agent
   steps:
   - task: TerraformInstaller@1
     displayName: terraform installer
