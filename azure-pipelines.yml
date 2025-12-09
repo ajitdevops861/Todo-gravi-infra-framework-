@@ -1,31 +1,48 @@
-trigger: 
-- feature/*
-- main
+trigger: none
+pool: none 
+jobs:
+- job: FirstJob
+  displayName: pahala job
+  pool: none
+  steps:
+  - task: TerraformInstaller@1
+    displayName: terraform installer
+    inputs:
+      terraformVersion: 'latest'
+  
+  - task: TerraformTask@5
+    displayName: terraform init are running
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
+      backendServiceArm: 'corp-prod-03-aj-todo-aplication'
+      backendAzureRmStorageAccountName: 'devshivi119'
+      backendAzureRmContainerName: 'tfstate'
+      backendAzureRmKey: 'dev2.terraform.tfstate'
 
+  - task: TerraformTask@5
+    displayName: terraform validate are running
+    inputs:
+      provider: 'azurerm'
+      command: 'validate'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
 
-pool: My Agent
+  - task: TerraformTask@5
+    displayName: terraform plan are running
+    inputs:
+      provider: 'azurerm'
+      command: 'plan'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
+      environmentServiceNameAzureRM: 'corp-prod-03-aj-todo-aplication'
 
-steps:
-- task: TerraformInstaller@1
-  inputs:
-    terraformVersion: 'latest'
+- job: ManualApproval
+  displayName: ManualApproval
+  pool: server
+  steps:
+  - task: ManualValidation@1
+    inputs:
+      notifyUsers: 'ajitraghav397@gmail.com'
+      approvers: 'ajitraghav397@gmail.com'
+      instructions: "Approve to continue deployment"
 
-- task: TerraformTask@5
-  displayName: terraform init ho raha
-  inputs:
-    provider: 'azurerm'
-    command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
-    backendServiceArm: 'corp-prod-03-aj-todo-aplication'
-    backendAzureRmStorageAccountName: 'devshivi119'
-    backendAzureRmContainerName: 'tfstate'
-    backendAzureRmKey: 'dev2.terraform.tfstate'
-
-
-- task: TerraformTask@5
-  displayName: terraform plan ho raha
-  inputs:
-    provider: 'azurerm'
-    command: 'plan'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
-    environmentServiceNameAzureRM: 'corp-prod-03-aj-todo-aplication'
