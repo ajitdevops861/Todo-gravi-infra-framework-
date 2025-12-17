@@ -1,16 +1,16 @@
 rgs1 = {
   rg1 = {
-    name     = "dev-812-test"
+    name     = "prod-812-test"
     location = "australiaeast"
 
     tags = {
-      environment = "dev"
+      environment = "prod"
       owner       = "aj"
     }
   }
 
   rg2 = {
-    name     = "graviinfra101"
+    name     = "prod-graviinfra101"
     location = "eastus"
   }
 }
@@ -19,7 +19,7 @@ vnets = {
   "vnet1" = {
     name                = "vnet-east"
     location            = "australiaeast"
-    resource_group_name = "dev-812-test"
+    resource_group_name = "prod-812-test"
 
     address_space = ["10.2.0.0/16"]
     #dns_servers   = ["10.2.0.4", "10.2.0.5"]
@@ -43,12 +43,12 @@ vnets = {
 }
 
 nsgs = {
-  dev-nsg1 = {
-    name                = "dev-nsg"
+  prod-nsg1 = {
+    name                = "prod-nsg"
     location            = "australiaeast"
-    resource_group_name = "dev-812-test"
+    resource_group_name = "prod-812-test"
     tags = {
-      environment = "dev"
+      environment = "prod"
     }
 
     inbound_rules = [
@@ -94,7 +94,7 @@ nsgs = {
 public_ips = {
   "pip1" = {
     name                = "frontend_pip"
-    resource_group_name = "dev-812-test"
+    resource_group_name = "prod-812-test"
     location            = "australiaeast"
     allocation_method   = "Static"
 
@@ -103,7 +103,7 @@ public_ips = {
 
   pip2 = {
     name                = "Backend_pip"
-    resource_group_name = "dev-812-test"
+    resource_group_name = "prod-812-test"
     location            = "australiaeast"
     allocation_method   = "Static" # Dynamic Quota full
     sku                 = "Standard"
@@ -115,9 +115,9 @@ public_ips = {
 
 keyvaults = {
   "kv-Dev" = {
-    kv_name             = "keyvault-todo-new"
+    kv_name             = "prod-keyvault-todo-new"
     location            = "australiaeast"
-    resource_group_name = "dev-812-test"
+    resource_group_name = "prod-812-test"
     sku_name            = "standard"
 
     # optional values (can skip if not needed)
@@ -125,7 +125,7 @@ keyvaults = {
 
     purge_protection_enabled = false
     tags = {
-      environment = "dev"
+      environment = "prod"
 
     }
 
@@ -136,45 +136,45 @@ keyvaults = {
 
 kv_secrets = {
   "kv_secret1" = {
-    kv_name = "keyvault-todo-new"
-    rg_name = "dev-812-test"
+    kv_name = "prod-keyvault-todo-new"
+    rg_name = "prod-812-test"
 
     secret_name  = "frontend-vm1-adminusername-"
     secret_value = "adminuseraj"
-    tags         = { environment = "dev" }
+    tags         = { environment = "prod" }
   },
   kv_secret2 = {
-    kv_name      = "keyvault-todo-new"
-    rg_name      = "dev-812-test"
+    kv_name      = "prod-keyvault-todo-new"
+    rg_name      = "prod-812-test"
     secret_name  = "frontend-vm1-adminpassword-"
     secret_value = "ajitraghav@0000"
-    tags         = { environment = "dev" }
+    tags         = { environment = "prod" }
   },
   "kv_secret3" = {
-    kv_name = "keyvault-todo-new"
-    rg_name = "dev-812-test"
+    kv_name = "prod-keyvault-todo-new"
+    rg_name = "prod-812-test"
 
     secret_name  = "Backend-vm2-adminusername-"
     secret_value = "adminuseraj"
-    tags         = { environment = "dev" }
+    tags         = { environment = "prod" }
   },
   kv_secret4 = {
-    kv_name      = "keyvault-todo-new"
-    rg_name      = "dev-812-test"
+    kv_name      = "prod-keyvault-todo-new"
+    rg_name      = "prod-812-test"
     secret_name  = "Backend-vm2-adminpassword-"
     secret_value = "ajitraghav@0000"
-    tags         = { environment = "dev" }
+    tags         = { environment = "prod" }
   },
 
   kv_secret5 = {
-    kv_name      = "keyvault-todo-new"
-    rg_name      = "dev-812-test"
+    kv_name      = "prod-keyvault-todo-new"
+    rg_name      = "prod-812-test"
     secret_name  = "sql-usernamee1"
     secret_value = "devopsadmin"
   },
   kv_secret6 = {
-    kv_name      = "keyvault-todo-new"
-    rg_name      = "dev-812-test"
+    kv_name      = "prod-keyvault-todo-new"
+    rg_name      = "prod-812-test"
     secret_name  = "sql-passwordd1"
     secret_value = "P@ssw01rd@123"
   }
@@ -187,10 +187,10 @@ nics = {
     pip_name                      = "frontend_pip"
     name                          = "nic-frontend"
     location                      = "australiaeast"
-    resource_group_name           = "dev-812-test"
+    resource_group_name           = "prod-812-test"
     enable_ip_forwarding          = false
     enable_accelerated_networking = false
-    tags                          = { environment = "dev" }
+    tags                          = { environment = "prod" }
 
     ip_configurations = [
       {
@@ -207,10 +207,10 @@ nics = {
     pip_name                      = "Backend_pip"
     name                          = "nic-backend"
     location                      = "australiaeast"
-    resource_group_name           = "dev-812-test"
+    resource_group_name           = "prod-812-test"
     enable_ip_forwarding          = false
     enable_accelerated_networking = false
-    tags                          = { environment = "dev" }
+    tags                          = { environment = "prod" }
 
     ip_configurations = [
       {
@@ -226,14 +226,14 @@ nics = {
 nic_nsg_association = {
   assoc1 = {
     nic_name            = "nic-frontend"
-    nsg_name            = "dev-nsg"
-    resource_group_name = "dev-812-test"
+    nsg_name            = "prod-nsg"
+    resource_group_name = "prod-812-test"
   }
 
   assoc2 = {
     nic_name            = "nic-backend"
-    nsg_name            = "dev-nsg"
-    resource_group_name = "dev-812-test"
+    nsg_name            = "prod-nsg"
+    resource_group_name = "prod-812-test"
   }
 
 
@@ -243,8 +243,8 @@ nic_nsg_association = {
 vms = {
   "vm1" = {
 
-    name                = "vm-todo-frontend"
-    resource_group_name = "dev-812-test"
+    name                = "prod-vm-todo-frontend"
+    resource_group_name = "prod-812-test"
     location            = "australiaeast"
     size                = "Standard_D2s_v3"
 
@@ -252,7 +252,7 @@ vms = {
     disable_password_authentication = false
     script_name                     = "middleware.nginx.sh"
     nic_name                        = "nic-frontend"
-    kv_name                         = "keyvault-todo-new"
+    kv_name                         = "prod-keyvault-todo-new"
     vm_username_secret_name         = "frontend-vm1-adminusername-"
     vm_password_secret_name         = "frontend-vm1-adminpassword-"
     source_image_reference = {
@@ -264,14 +264,14 @@ vms = {
   }
   "vm2" = {
 
-    name                = "vm-todo-Backend"
-    resource_group_name = "dev-812-test"
+    name                = "prod-vm-todo-Backend"
+    resource_group_name = "prod-812-test"
     location            = "australiaeast"
     size                = "Standard_D2s_v3"
 
     disable_password_authentication = false
     nic_name                        = "nic-backend"
-    kv_name                         = "keyvault-todo-new"
+    kv_name                         = "prod-keyvault-todo-new"
     vm_username_secret_name         = "Backend-vm2-adminusername-"
     vm_password_secret_name         = "Backend-vm2-adminpassword-"
     source_image_reference = {
@@ -300,18 +300,18 @@ vms = {
 #}
 servers = {
   server1 = {
-    name                          = "devserver001os"
+    name                          = "prodserver001os"
     location                      = "australiaeast"
-    resource_group_name           = "dev-812-test"
+    resource_group_name           = "prod-812-test"
     public_network_access_enabled = true
     administrator_login           = "server12"
     administrator_login_password  = "Ajit@12345"
     version                       = "12.0"
   }
   server2 = {
-    name                          = "devserver002os"
+    name                          = "prodserver002os"
     location                      = "australiaeast"
-    resource_group_name           = "dev-812-test"
+    resource_group_name           = "prod-812-test"
     public_network_access_enabled = true
     administrator_login           = "server13"
     administrator_login_password  = "Ajit@12345"
@@ -322,17 +322,17 @@ servers = {
 # Database input
 database = {
   "db1" = {
-    server_name         = "devserver001os"
-    resource_group_name = "dev-812-test"
-    database_name       = "devdatabase001"
+    server_name         = "prodserver001os"
+    resource_group_name = "prod-812-test"
+    database_name       = "proddatabase001"
     collation           = "SQL_Latin1_General_CP1_CI_AS"
     license_type        = "LicenseIncluded"
     max_size_gb         = 10
     sku_name            = "S0"
     #enclave_type = # optional
     tags = {
-      environment = "dev"
-      project     = "Todo-app"
+      environment = "prod"
+      project     = "prod-Todo-app"
     }
   }
 }
@@ -340,16 +340,16 @@ database = {
 # Storage_account_input
 stgs = {
   "stg1" = {
-    storage_account_name          = "devajrg1507"
-    resource_group_name           = "dev-812-test"
+    storage_account_name          = "prodajrg1507"
+    resource_group_name           = "prod-812-test"
     location                      = "australiaeast"
     account_tier                  = "Standard"
     account_replication_type      = "LRS"
     min_tls_version               = "TLS1_2"
     public_network_access_enabled = true
     tags = {
-      environment = "dev"
-      project     = "Todo-app"
+      environment = "prod"
+      project     = "prod-Todo-app"
     }
   }
 }
