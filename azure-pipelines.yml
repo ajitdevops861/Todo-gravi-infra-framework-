@@ -86,10 +86,10 @@ jobs:
       workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
       environmentServiceNameAzureRM: 'corp-prod-03-aj-todo-aplication'
 
-  - task: TerraformTask@5
-    inputs:
-      provider: 'azurerm'
-      command: 'destroy'
-      workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
-      commandOptions: '-auto-approve'
-      environmentServiceNameAzureRM: 'corp-prod-03-aj-todo-aplication'
+  # - task: TerraformTask@5
+  #   inputs:
+  #     provider: 'azurerm'
+  #     command: 'destroy'
+  #     workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
+  #     commandOptions: '-auto-approve'
+  #     environmentServiceNameAzureRM: 'corp-prod-03-aj-todo-aplication'
