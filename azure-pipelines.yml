@@ -57,6 +57,7 @@ jobs:
   displayName: Terraform apply
   steps:
   - task: TerraformTask@5
+    displayName: Terraform apply
     inputs:
       provider: 'azurerm'
       command: 'init'
