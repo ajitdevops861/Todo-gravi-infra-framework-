@@ -31,6 +31,13 @@ jobs:
       command: 'validate'
       workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
 
+  
+  - task: tfsec@1
+    displayName: tfsec security scan
+    continueOnError: true
+    inputs:
+      version: 'v1.26.0'
+      dir: '$(System.DefaultWorkingDirectory)/ENV/DEV'
 
   - task: TerraformTask@5
     displayName: terraform plan
