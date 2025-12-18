@@ -60,38 +60,38 @@ jobs:
       approvers: 'ajitraghav397@gmail.com'
       instructions: 'pls approve for infra deployment'
 
-# - job: apply
-#   pool: My Agent
-#   dependsOn: approvel
-#   displayName: Terraform apply
-#   steps:
-#   - task: TerraformInstaller@1
-#     displayName: terraform installer task
-#     inputs:
-#       terraformVersion: 'latest' 
+- job: apply
+  pool: My Agent
+  dependsOn: approvel
+  displayName: Terraform apply
+  steps:
+  - task: TerraformInstaller@1
+    displayName: terraform installer task
+    inputs:
+      terraformVersion: 'latest' 
 
-#   - task: TerraformTask@5
-#     displayName: terraform init
-#     inputs:
-#       provider: 'azurerm'
-#       command: 'init'
-#       workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
-#       backendServiceArm: 'corp-prod-03-aj-todo-aplication'
-#       backendAzureRmResourceGroupName: 'shiviaj101'
-#       backendAzureRmStorageAccountName: 'stgshivi101'
-#       backendAzureRmContainerName: 'tfstate'
-#       backendAzureRmKey: 'dev2.terraform.tfstate'
+  - task: TerraformTask@5
+    displayName: terraform init
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
+      backendServiceArm: 'corp-prod-03-aj-todo-aplication'
+      backendAzureRmResourceGroupName: 'shiviaj101'
+      backendAzureRmStorageAccountName: 'stgshivi101'
+      backendAzureRmContainerName: 'tfstate'
+      backendAzureRmKey: 'dev2.terraform.tfstate'
 
        
 
 
-#   - task: TerraformTask@5
-#     displayName: APPLY
-#     inputs:
-#       provider: 'azurerm'
-#       command: 'apply'
-#       workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
-#       environmentServiceNameAzureRM: 'corp-prod-03-aj-todo-aplication'
+  - task: TerraformTask@5
+    displayName: APPLY
+    inputs:
+      provider: 'azurerm'
+      command: 'apply'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
+      environmentServiceNameAzureRM: 'corp-prod-03-aj-todo-aplication'
 
 #   # - task: TerraformTask@5
 #   #   inputs:
