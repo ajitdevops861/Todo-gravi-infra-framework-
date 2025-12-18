@@ -4,6 +4,6 @@ terraform {
     storage_account_name = "stgshivi101"
     container_name = "tfstate"
     key = "dev2.terraform.tfstate" # for dev 
-    use_azuread_auth = false # backend
+    use_azuread_auth = true # backend
   }
 }
