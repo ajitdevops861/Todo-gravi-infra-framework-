@@ -3,7 +3,7 @@ trigger: none
 pool: My Agent
 
 jobs:
-- job:  firstjob
+- job:  initValidatePlan
   displayName: init and plan job
   pool: My Agent
   steps:
@@ -44,6 +44,7 @@ jobs:
 - job: approvel
   displayName: manager Approval
   pool: server
+  dependsOn: initValidatePlan
   steps:
   - task: ManualValidation@1
     displayName: Manual validation
@@ -54,6 +55,7 @@ jobs:
 
 - job: apply
   pool: My Agent
+  dependsOn: approvel
   displayName: Terraform apply
   steps:
   - task: TerraformTask@5
