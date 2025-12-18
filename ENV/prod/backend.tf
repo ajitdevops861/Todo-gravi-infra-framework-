@@ -1,9 +1,9 @@
-# terraform {
-#   backend "azurerm" {
-#     resource_group_name = "value"
-#     storage_account_name = "value"
-#     container_name = "value"
-#     key = "value"
-#     use_azuread_auth = false
-#   }
-# }
+ terraform {
+   backend "azurerm" {
+     resource_group_name = "shiviaj101"
+     storage_account_name = "stgshivi101"
+     container_name = "tfstate"
+     key = "prod2.terraform.tfstate"
+     use_azuread_auth = false
+   }
+}
