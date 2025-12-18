@@ -1,48 +1,45 @@
 trigger: none
+
 pool: My Agent
+
 jobs:
-- job: FirstJob
-  displayName: pahala job
+- job:  firstjob
+  displayName: init and plan job
   pool: My Agent
   steps:
   - task: TerraformInstaller@1
-    displayName: terraform installer
+    displayName: terraform installer task
     inputs:
       terraformVersion: 'latest'
-  
+
   - task: TerraformTask@5
-    displayName: terraform init are running
+    displayName: terraform init
     inputs:
       provider: 'azurerm'
       command: 'init'
       workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
       backendServiceArm: 'corp-prod-03-aj-todo-aplication'
-      backendAzureRmStorageAccountName: 'devshivi119'
+      backendAzureRmResourceGroupName: 'shiviaj101'
+      backendAzureRmStorageAccountName: 'stgshivi101'
       backendAzureRmContainerName: 'tfstate'
       backendAzureRmKey: 'dev2.terraform.tfstate'
 
   - task: TerraformTask@5
-    displayName: terraform validate are running
+    displayName: terraform validate
     inputs:
       provider: 'azurerm'
       command: 'validate'
       workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
 
+
   - task: TerraformTask@5
-    displayName: terraform plan are running
+    displayName: terraform plan
     inputs:
       provider: 'azurerm'
       command: 'plan'
       workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
       environmentServiceNameAzureRM: 'corp-prod-03-aj-todo-aplication'
 
-- job: ManualApproval
-  displayName: ManualApproval
-  pool: server
-  steps:
-  - task: ManualValidation@1
-    inputs:
-      notifyUsers: 'ajitraghav397@gmail.com'
-      approvers: 'ajitraghav397@gmail.com'
-      instructions: "Approve to continue deployment"
 
+
+      
