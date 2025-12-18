@@ -58,7 +58,10 @@ jobs:
   dependsOn: approvel
   displayName: Terraform apply
   steps:
- 
+  - task: TerraformInstaller@1
+    displayName: terraform installer task
+    inputs:
+      terraformVersion: 'latest' 
 
   - task: TerraformTask@5
     displayName: terraform init
