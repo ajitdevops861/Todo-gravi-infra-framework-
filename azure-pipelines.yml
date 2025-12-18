@@ -41,5 +41,28 @@ jobs:
       environmentServiceNameAzureRM: 'corp-prod-03-aj-todo-aplication'
 
 
+- job: approvel
+  displayName: manager Approval
+  pool: server
+  steps:
+  - task: ManualValidation@1
+    displayName: Manual validation
+    inputs:
+      notifyUsers: 'ajitraghav397@gmail.com'
+      approvers: 'ajitraghav397@gmail.com'
+      instructions: 'pls approve for infra deployment'
 
-      
+- job: apply
+  pool: My Agent
+  displayName: Terraform apply
+  steps:
+  - task: TerraformTask@5
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
+      backendServiceArm: 'corp-prod-03-aj-todo-aplication'
+      backendAzureRmResourceGroupName: 'shiviaj101'
+      backendAzureRmStorageAccountName: 'stgshivi101'
+      backendAzureRmContainerName: 'tfstate'
+      backendAzureRmKey: 'dev2.terraform.tfstate'
