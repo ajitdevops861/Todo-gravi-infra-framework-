@@ -68,3 +68,11 @@ jobs:
       backendAzureRmStorageAccountName: 'stgshivi101'
       backendAzureRmContainerName: 'tfstate'
       backendAzureRmKey: 'dev2.terraform.tfstate'
+
+  - task: TerraformTask@5
+    displayName: APPLY
+    inputs:
+      provider: 'azurerm'
+      command: 'apply'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/ENV/DEV'
+      environmentServiceNameAzureRM: 'corp-prod-03-aj-todo-aplication'
