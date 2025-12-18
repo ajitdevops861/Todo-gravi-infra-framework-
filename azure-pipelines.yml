@@ -58,7 +58,9 @@ jobs:
   dependsOn: approvel
   displayName: Terraform apply
   steps:
+ 
   - task: TerraformTask@5
+    displayName: terraform init
     inputs:
       provider: 'azurerm'
       command: 'init'
