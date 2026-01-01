@@ -300,7 +300,7 @@ vms = {
 #}
 servers = {
   server1 = {
-    name                          = "devserver001os"
+    name                          = "devserver0002os"
     location                      = "australiaeast"
     resource_group_name           = "dev-812-test"
     public_network_access_enabled = true
@@ -309,7 +309,7 @@ servers = {
     version                       = "12.0"
   }
   server2 = {
-    name                          = "devserver002os"
+    name                          = "devserver00042os"
     location                      = "australiaeast"
     resource_group_name           = "dev-812-test"
     public_network_access_enabled = true
@@ -322,7 +322,7 @@ servers = {
 # Database input
 database = {
   "db1" = {
-    server_name         = "devserver001os"
+    server_name         = "devserver0002os"
     resource_group_name = "dev-812-test"
     database_name       = "devdatabase001"
     collation           = "SQL_Latin1_General_CP1_CI_AS"

@@ -23,6 +23,7 @@ resource "azurerm_key_vault" "kv" {
   purge_protection_enabled    = each.value.purge_protection_enabled #true or False
   enabled_for_disk_encryption = each.value.enabled_for_disk_encryption  #true or False
   tags                        = each.value.tags
+  //enable_rbac_authorization = true   # important
 
   
 
